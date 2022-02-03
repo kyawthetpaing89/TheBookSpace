@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "AuthorList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="text-align: center;">
+        <h4 class="panel-title">Author/Illustrator List</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-group col-xl-3 col-md-3 col-lg-3 col-sm-12">
+                <label for="Name">Name</label>
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" id="Name" tabindex="1" />
+                </div>
+            </div>
+            <div class="form-group col-xl-2 col-md-12 col-lg-2 col-sm-12">
+                <label for="Type">Author/Illustrator</label>
+                <div class="input-group">
+                    <select class="form-control input-sm" tabindex="2" id="Type">
+                        <option value=""></option>
+                        <option value="1">Author</option>
+                        <option value="2">Illustrator</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xl-2 col-md-2 col-lg-2 col-sm-12">
+                <label for="btnAuthorSearch">.</label>
+                <div class="input-group">
+                    <button class="btn btn-pink form-control" onclick="AuthorSearch()" id="btnAuthorSearch">Search</button>
+                </div>
+            </div>
+        </div>
+        <table id="tblAuthor" class="table table-striped table-bordered table-td-valign-middle" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>About Author/Illustrator</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<input id="HGetAuthor" type="hidden" value="@Url.Action("GetAuthor", "api/AuthorApi")" />
+<input id="HAuthorEntry" type="hidden" value="@Url.Action("AuthorEntry", "Author")" />
+@section Scripts{
+    <script src="@Url.Content("~/AdminScripts/author.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            AuthorListLoad();
+        });
+    </script>
+}
+

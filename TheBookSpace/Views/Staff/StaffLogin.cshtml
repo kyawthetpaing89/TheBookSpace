@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "StaffLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <p class="sign" align="center">The Book Space</p>
+    <div class="form1">
+        <input class="un " id="StaffCD" type="text" align="center" placeholder="StaffCD">
+        <input class="pass" id="StaffPassword" type="password" align="center" placeholder="Password">
+        <button class="loginbtn" type="button" onclick="SigninClick();" align="center">Sign in</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="@Url.Content("~/AdminScripts/staff.js")"></script>
+    <input id="HGetStaff" type="hidden" value="@Url.Action("GetStaff", "api/StaffApi")" />
+    <input id="HDashBoard" type="hidden" value="@Url.Action("Dashboard", "Home")" />
+    <input id="HSession" type="hidden" value="@Url.Action("CreateSession", "Home")" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            StaffLoginLoad();
+        });
+    </script>
+}
+

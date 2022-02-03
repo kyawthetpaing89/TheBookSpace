@@ -1,0 +1,3 @@
+﻿function ShopHomeLoad() {
+    GetNewBooks();
+}

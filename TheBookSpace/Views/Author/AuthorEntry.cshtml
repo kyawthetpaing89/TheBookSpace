@@ -1,0 +1,57 @@
+﻿@model TBS_Model.AuthorModel
+@{
+    ViewBag.Title = "AuthorEntry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="text-align: center;">
+        <h4 class="panel-title">Autor/Illustrator Entry</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="form-group required">
+                    <label>Name</label>
+                    @Html.TextBoxFor(x => x.AuthorName, new { @tabIndex = 1, @maxlength = 50, @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group col-xl-2 col-md-12 col-lg-2 col-sm-12" style="padding-left:10px;padding-right:10px">
+                <label for="Type">Author/Illustrator</label>
+                <div class="input-group">
+                    <select class="form-control input-sm" tabindex="2" id="Type">
+                        <option value="1">Author</option>
+                        <option value="2">Illustrator</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>About</label>
+                    @Html.TextAreaFor(x => x.AboutAuthor, new { @tabIndex = 3, @maxlength = 2000, @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="div-centerbtn">
+            <button id="btnSave" onclick="AuthorSaveClick();" class="btn btn-green col-sm-12 col-md-12 col-lg-2 col-xl-2"><i class="fa fa-save"></i>&nbsp;<span class="buttontext" id="btnText">Save</span></button>
+        </div>
+    </div>
+</div>
+@Html.HiddenFor(x => x.Mode)
+@Html.HiddenFor(x => x.AuthorCD)
+@Html.HiddenFor(x => x.Type,new { id = "xType" })
+<input id="HAuthorCUD" type="hidden" value="@Url.Action("AuthorCUD", "api/AuthorApi")" />
+<input id="HGetAuthor" type="hidden" value="@Url.Action("GetAuthor", "api/AuthorApi")" />
+<input id="HAuthorList" type="hidden" value="@Url.Action("AuthorList", "Author")" />
+@section Scripts{
+    <script src="@Url.Content("~/AdminScripts/author.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            AuthorEntryLoad();
+        });
+    </script>
+}

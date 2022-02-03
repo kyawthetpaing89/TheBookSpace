@@ -1,0 +1,54 @@
+﻿@model TBS_Model.CollectionModel
+@{
+    ViewBag.Title = "CollectionList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="text-align: center;">
+        <h4 class="panel-title"><label id="lblTitle">Collection List</label></h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="form-group col-xl-2 col-md-2 col-lg-2 col-sm-12">
+                <div class="input-group">
+                    <button class="btn btn-green form-control" onclick="ShowBookMultiSearchModal()" id="btnCollectionSearch">Add Books</button>
+                </div>
+            </div>
+        </div>
+        <table id="tblCollection" class="table table-striped table-bordered table-td-valign-middle" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Book Name</th>
+                    <th>Collection Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial(Url.Content("~/Views/Search/BookMultiSearch.cshtml"))
+
+<input id="HGetCollection" type="hidden" value="@Url.Action("GetCollection", "api/CollectionApi")" />
+<input id="HCollectionCUD" type="hidden" value="@Url.Action("CollectionCUD", "api/CollectionApi")" />
+<input id="HGetBook" type="hidden" value="@Url.Action("GetBook", "api/BookApi")" />
+@Html.HiddenFor(x => x.CollectionType)
+
+
+@section Scripts{
+    <script src="@Url.Content("~/AdminScripts/bookmultisearch.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/collection.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            CollectionListLoad();
+        });
+    </script>
+}
+
+
+

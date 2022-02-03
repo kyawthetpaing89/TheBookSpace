@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>BookSpace[@ViewBag.Title]</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <link rel="icon" href=@Url.Content("~/img/tbs3.ico") />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="@Url.Content("~/AdminContent/app.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/ionicons.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/dataTables.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/responsive.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/buttons.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/sweetalert2.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/common.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datepicker3.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/iziModal.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/iziModal.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/login.css")" rel="stylesheet" />
+</head>
+<body>
+    @RenderBody();
+    <script src="@Url.Content("~/AdminScripts/app.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/apple.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/responsive.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.colVis.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.flash.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.html5.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.print.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/pdfmake.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/vfs_fonts.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/jszip.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/table-manage-buttons.demo.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/sweetalert2.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/message.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/api.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/bootstrap-datepicker.js")"></script>
+    @*eonasdan-bootstrap-datetimepicker*@
+    <script src="@Url.Content("~/AdminScripts/moment.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/bootstrap-datetimepicker.min.js")"></script>
+    @*cleave number format*@
+    <script src="@Url.Content("~/AdminScripts/cleave.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/iziModal.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/iziModal.js")"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

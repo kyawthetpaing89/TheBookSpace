@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>BookSpace[@ViewBag.Title]</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="icon" href=@Url.Content("~/SystemImages/GBMLogo.ico") />
+    <link href="@Url.Content("~/AdminContent/app.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/ionicons.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/dataTables.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/responsive.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/buttons.bootstrap4.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/sweetalert2.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/common.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datepicker3.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/iziModal.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/AdminContent/iziModal.min.css")" rel="stylesheet" />
+    @{
+
+        string ID = string.Empty;
+        string Name = string.Empty;
+        string obj = string.Empty;
+        if (Session["UserInfo"] != null)
+        {
+            obj = Session["UserInfo"].ToString();
+            ID = obj.Split('_')[0];
+            Name = obj.Split('_')[1];
+        }
+        else
+        {
+            Response.Redirect(Url.Content("~/Staff/StaffLogin"));
+        }
+    }
+</head>
+<body style="font-size:13px">
+    <input id="LoginID" type="hidden" value="@ID" />
+    <input type="hidden" id="himgpath" value="http://3.130.80.234/TBS/BookImages/" />
+    <div id="page-loader" class="fade show">
+        <span class="spinner"></span>
+    </div>
+    <div id="page-container" class="page-container fade">
+        <div id="header" class="header navbar-default" style="position:fixed;">
+            <div class="navbar-header">
+                <a href="@Url.Action("ProjectList","Project")" class="navbar-brand viewBack">
+                    <img style="margin-right:5px" src="@Url.Content("~/img/tbs3.jpg")" />
+                    <b class="mr-1 titlecolor">The Book Space</b>
+                </a>
+                <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <ul class="navbar-nav navbar-right">
+                <li class="dropdown navbar-user">
+                    <a href="page_blank.html#" class="dropdown-toggle" data-toggle="dropdown">
+
+                        <span class="d-none d-md-inline" style="font-weight:600;color:white">@Name</span> <b class="caret"></b>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="@Url.Action("StaffLogin","Staff")" class="dropdown-item">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="sidebar" class="sidebar" style="padding-top:50px; position: fixed;">
+
+            <div data-scrollbar="true" data-height="100%">
+                <ul class="nav">
+                    <li>
+                        <ul class="nav nav-profile">
+                            <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav">
+                    <li class="nav-header">Menu</li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fa fa-book bg-lime text-inverse"></i>
+                            <span>Book</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("BookList","Book")">Book List</a></li>
+                            <li><a href="@Url.Action("BookEntry","Book")">Book Entry</a></li>
+                            <li><a href="@Url.Action("CollectionList","Collection")?CollectionType=1">New Arrival</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="ion ion-ios-person bg-gradient-aqua text-inverse"></i>
+                            <span>Author/Illustrator</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("AuthorList","Author")">Author/Illustrator List</a></li>
+                            <li><a href="@Url.Action("AuthorEntry","Author")">Author/Illustrator Entry</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="ion ion-ios-book bg-pink"></i>
+                            <span>Publisher</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("PublisherList","Publisher")">Publisher List</a></li>
+                            <li><a href="@Url.Action("PublisherEntry","PUblisher")">Publisher Entry</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="ion ion-ios-folder bg-gradient-indigo"></i>
+                            <span>Series</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("SeriesList","Series")">Series List</a></li>
+                            <li><a href="@Url.Action("SeriesEntry","Series")">Series Entry</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="ion ion-social-buffer bg-gradient-orange"></i>
+                            <span>Category</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("CategoryList","Category")">Category List</a></li>
+                            <li><a href="@Url.Action("CategoryEntry","Category")">Category Entry</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="bg-green"><ion-icon style="color:blue" name="server-outline"></ion-icon></i>
+                            <span>စာရင်းများ</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("OrderWinnerList","Order")">ပေါက်သည့်စာရင်း</a></li>
+                            <li><a href="@Url.Action("SummaryList","Summary")">စာရင်းများကြည့်ရန်</a></li>
+                            <li><a href="@Url.Action("DailySummaryList","Summary")">နေ့အလိုက် စာရင်းများ</a></li>
+                            <li><a href="@Url.Action("SummaryListByTime","Summary")">ဒိုင်ခွဲ စာရင်းများ</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ion-ios-arrow-back"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-bg"></div>
+        <div id="content" class="content" style="padding-top:70px;">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="divloader" class="loader" style="background: url('@Url.Content("~/img/loading.gif")') 50% 50% no-repeat rgb(249,249,249)"></div>
+
+    <script src="@Url.Content("~/AdminScripts/app.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/apple.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.responsive.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/responsive.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.colVis.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.flash.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.html5.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/buttons.print.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/pdfmake.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/vfs_fonts.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/jszip.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/table-manage-buttons.demo.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/sweetalert2.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/message.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/api.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/common.js")"></script>
+    @*eonasdan-bootstrap-datetimepicker*@
+    <script src="@Url.Content("~/AdminScripts/moment.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/bootstrap-datetimepicker.min.js")"></script>
+    @*cleave number format*@
+    <script src="@Url.Content("~/AdminScripts/cleave.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/iziModal.min.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/iziModal.js")"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#divloader').hide();
+
+            //$(document).ajaxStart(function () {
+            //    $('#divloader').show(); // show the gif image when ajax starts
+            //}).ajaxStop(function () {
+            //    $('#divloader').hide(); // hide the gif image when ajax completes
+            //});
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

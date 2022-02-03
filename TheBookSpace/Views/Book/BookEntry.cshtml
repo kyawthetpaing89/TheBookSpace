@@ -1,0 +1,388 @@
+﻿@model TBS_Model.BookModel
+@{
+    ViewBag.Title = "BookEntry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="text-align: center;">
+        <h4 class="panel-title">Book Entry</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="divbookbody" class="row">
+            <div class="col-lg-4 col-md-12 col-lg-4 col-sm-12">
+                <div class="form-group required">
+                    <label>Book Name</label>
+                    @Html.TextBoxFor(x => x.BookName, new { @tabIndex = 1, @maxlength = 100, @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group col-xl-2 col-md-12 col-lg-2 col-lg-2 col-sm-12">
+                <label for="Category">Category</label>
+                <div class="input-group">
+                    <select class="form-control input-sm" tabindex="2" id="Category">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xl-2 col-md-12 col-lg-2 col-sm-12">
+                <label for="Language">Language</label>
+                <div class="input-group">
+                    <select class="form-control input-sm" tabindex="3" id="Language">
+                        <option value=""></option>
+                        <option value="1">English</option>
+                        <option value="2">Japanese</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12">
+                <div class="form-group required">
+                    <label>Publication Year</label>
+                    @Html.TextBoxFor(x => x.PublicationYear, new { @tabIndex = 4, @maxlength = 4, @class = "form-control publishyear align-right" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12">
+                <div class="form-group required">
+                    <label>Total Pages</label>
+                    @Html.TextBoxFor(x => x.NoOfPages, new { @tabIndex = 5, @maxlength = 4, @class = "form-control totalpages align-right" })
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Series">Series</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.SeriesCD)
+                    <button id="btinSeriesSearch" tabindex="6" onclick="ShowSeriesSearchModal()" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.SeriesName, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btinSeriesClear" tabindex="7" onclick="SeriesClear()" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Publisher">Publisher</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.PublisherCD)
+                    <button id="btinPublisherSearch" tabindex="8" onclick="ShowPublisherSearchModal()" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.PublisherName, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btinPublisherClear" tabindex="9" onclick="PublisherClear()" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Author1">Author 1</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.AuthorCD1)
+                    <button id="btinAuthorSearch" tabindex="10" onclick="ShowAuthorSearchModal(1)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.AuthorName1, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnAuthorClear1" tabindex="11" onclick="AuthorClear(1)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Author2">Author 2</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.AuthorCD2)
+                    <button id="btinAuthorSearch" tabindex="12" onclick="ShowAuthorSearchModal(2)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.AuthorName2, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnAuthorClear2" tabindex="13" onclick="AuthorClear(2)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Author3">Author 3</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.AuthorCD3)
+                    <button id="btinAuthorSearch" tabindex="14" onclick="ShowAuthorSearchModal(3)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.AuthorName3, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnAuthorClear3" tabindex="15" onclick="AuthorClear(3)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Illustrator1">Illustrator 1</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.IllustratorCD1)
+                    <button id="btnIllustrator1Search" tabindex="16" onclick="ShowIllustratorSearchModal(1)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.IllustratorName1, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnIllustratorClear1" tabindex="17" onclick="IllustratorClear(1)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Illustrator2">Illustrator 2</label>
+                <div class="input-group">
+                    <input type="hidden" id="lblIllustrator2" />
+                    @Html.HiddenFor(x => x.IllustratorCD2)
+                    <button id="btnIllustrator2Search" tabindex="18" onclick="ShowIllustratorSearchModal(2)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.IllustratorName2, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnIllustratorClear2" tabindex="19" onclick="IllustratorClear(2)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="form-group col-xl-3 col-md-12 col-lg-3 col-sm-12">
+                <label for="Illustrator3">Illustrator 3</label>
+                <div class="input-group">
+                    @Html.HiddenFor(x => x.IllustratorCD3)
+                    <button id="btnIllustrator3Search" tabindex="20" onclick="ShowIllustratorSearchModal(3)" type="button" class="btn btn-pink"><i class="fa fa-search"></i></button>
+                    @Html.TextBoxFor(x => x.IllustratorName3, new { @class = "form-control", @readonly = "readonly" })
+                    <button id="btnIllustratorClear3" tabindex="21" onclick="IllustratorClear(3)" type="button" class="btn btn-danger"><i class="fa fa-arrow-left"></i></button>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-lg-6 col-sm-12">
+                <div class="form-group required">
+                    <label>Folder URL</label>
+                    @Html.TextBoxFor(x => x.FolderUrl, new { @tabIndex = 22, @maxlength = 500, @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12 col-lg-1 col-sm-12">
+                <div class="form-group required">
+                    <label>Age From</label>
+                    <div class="input-group">
+                        <select class="form-control input-sm" tabindex="29" id="AgeFrom">
+                            <option value=""></option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12 col-lg-1 col-sm-12">
+                <div class="form-group required">
+                    <label>Age To</label>
+                    <div class="input-group">
+                        <select class="form-control input-sm" tabindex="30" id="AgeTo">
+                            <option value=""></option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12 col-lg-1 col-sm-12">
+                <div class="form-group required">
+                    <label>Grade From</label>
+                    <div class="input-group">
+                        <select class="form-control input-sm" tabindex="31" id="GradeFrom">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12 col-lg-1 col-sm-12">
+                <div class="form-group required">
+                    <label>Grade To</label>
+                    <div class="input-group">
+                        <select class="form-control input-sm" tabindex="32" id="GradeTo">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12 col-lg-1 col-sm-12">
+                <div class="form-group required">
+                    <label>Paper Size</label>
+                    <div class="input-group">
+                        <select class="form-control input-sm" tabindex="33" id="PaperSize">
+                            <option value="1">A4</option>
+                            <option value="2">A5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-lg-3 col-sm-12">
+                <div class="form-group required">
+                    <label>Black & White/ White Price</label>
+                    @Html.TextBoxFor(x => x.BNW_White_Price, new { @tabIndex = 34, @maxlength = 7, @class = "form-control p1 align-right" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-lg-3 col-sm-12">
+                <div class="form-group required">
+                    <label>Black & White/ Creamy Price</label>
+                    @Html.TextBoxFor(x => x.BNW_Creamy_Price, new { @tabIndex = 35, @maxlength = 7, @class = "form-control p2 align-right" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-lg-3 col-sm-12">
+                <div class="form-group required">
+                    <label>Color/ White Price</label>
+                    @Html.TextBoxFor(x => x.Color_White_Price, new { @tabIndex = 36, @maxlength = 7, @class = "form-control p3 align-right" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-lg-3 col-sm-12">
+                <div class="form-group required">
+                    <label>Color/ Creamy Price</label>
+                    @Html.TextBoxFor(x => x.Color_Creamy_Price, new { @tabIndex = 37, @maxlength = 7, @class = "form-control p4 align-right" })
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-lg-12 col-sm-12">
+                <div class="form-group required">
+                    <label>Book Content</label>
+                    @Html.TextAreaFor(x => x.BookContent, new { @tabIndex = 38, @maxlength = 2000, @class = "form-control", @style = "height:200px" })
+                </div>
+            </div>
+        </div>
+        <div id="divbookimages" class="row">
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12">
+                <div class="form-group required">
+                    <p>
+                        <span class="btn btn-primary btn-file">
+                            Cover Image <input type="file" id="fcover" accept="image/*" onchange="readURL(this,'imgcover');">
+                        </span>
+                    </p>
+                    <p>
+                        <button id="btnRemoveCoverImage" onclick="RemoveImageClick(0);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                    </p>
+                    <div class="preview">
+                        <img id="imgcover" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12 uploadfrm">
+                <p>
+                    <span class="btn btn-primary btn-file">
+                        Sample Image 1 <input type="file" id="f1" accept="image/*" onchange="readURL(this,'img1');">
+                    </span>
+                </p>
+                <p>
+                    <button id="btnRemoveImage1" onclick="RemoveImageClick(1);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                </p>
+                <div class="preview">
+                    <img id="img1" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12 uploadfrm">
+                <p>
+                    <span class="btn btn-primary btn-file">
+                        Sample Image 2 <input type="file" id="f2" accept="image/*" onchange="readURL(this,'img2');">
+                    </span>
+                </p>
+                <p>
+                    <button id="btnRemoveImage2" onclick="RemoveImageClick(2);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                </p>
+                <div class="preview">
+                    <img id="img2" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12 uploadfrm">
+                <p>
+                    <span class="btn btn-primary btn-file">
+                        Sample Image 3 <input type="file" id="f3" accept="image/*" onchange="readURL(this,'img3');">
+                    </span>
+                </p>
+                <p>
+                    <button id="btnRemoveImage3" onclick="RemoveImageClick(3);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                </p>
+                <div class="preview">
+                    <img id="img3" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12 uploadfrm">
+                <p>
+                    <span class="btn btn-primary btn-file">
+                        Sample Image 4 <input type="file" id="f4" accept="image/*" onchange="readURL(this,'img4');">
+                    </span>
+                </p>
+                <p>
+                    <button id="btnRemoveImage4" onclick="RemoveImageClick(4);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                </p>
+                <div class="preview">
+                    <img id="img4" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-lg-2 col-sm-12 uploadfrm">
+                <p>
+                    <span class="btn btn-primary btn-file">
+                        Sample Image 5 <input type="file" id="f5" accept="image/*" onchange="readURL(this,'img5');">
+                    </span>
+                </p>
+                <p>
+                    <button id="btnRemoveImage5" onclick="RemoveImageClick(5);" tabindex="39" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;<span class="buttontext">Remove</span></button>
+                </p>
+                <div class="preview">
+                    <img id="img5" src="@Url.Content("~/img/nophoto.jpg")" alt="" width="200" height="200" class="img-thumbnail border-0">
+                </div>
+            </div>
+        </div>
+        <div class="div-centerbtn">
+            <button id="btnSave" onclick="BookSaveClick();" tabindex="39" class="btn btn-green col-sm-12 col-md-12 col-lg-2 col-xl-2"><i class="fa fa-save"></i>&nbsp;<span class="buttontext" id="btnText">Save</span></button>
+        </div>
+    </div>
+</div>
+
+@Html.Partial(Url.Content("~/Views/Search/SeriesSearch.cshtml"))
+@Html.Partial(Url.Content("~/Views/Search/PublisherSearch.cshtml"))
+@Html.Partial(Url.Content("~/Views/Search/AuthorSearch.cshtml"))
+
+<input type="hidden" id="AuthorNo" />
+<input type="hidden" id="IllustratorNo" />
+<input type="hidden" id="noimage" value="@Url.Content("~/img/nophoto.jpg")" />
+<input type="hidden" id="himgpath" value="@Url.Content("~/BookImages/")" />
+
+
+@Html.HiddenFor(x => x.Mode)
+@Html.HiddenFor(x => x.CategoryCD)
+@Html.HiddenFor(x => x.LanguageCD)
+@Html.HiddenFor(x => x.BookCD)
+@Html.HiddenFor(x => x.RecommandAgeFrom)
+@Html.HiddenFor(x => x.RecommandAgeTo)
+@Html.HiddenFor(x => x.GradeFrom, new { @id = "HGradeFrom" })
+@Html.HiddenFor(x => x.GradeTo, new { @id = "HGradeTo" })
+@Html.HiddenFor(x => x.PaperSize, new { @id = "HPaperSize" })
+@Html.HiddenFor(x => x.PaperSize, new { @id = "HPaperSize" })
+@Html.HiddenFor(x => x.CoverImageUrl)
+@Html.HiddenFor(x => x.SampleImageUrl1)
+@Html.HiddenFor(x => x.SampleImageUrl2)
+@Html.HiddenFor(x => x.SampleImageUrl3)
+@Html.HiddenFor(x => x.SampleImageUrl4)
+@Html.HiddenFor(x => x.SampleImageUrl5)
+
+<input id="HBookCUD" type="hidden" value="@Url.Action("BookCUD", "api/BookApi")" />
+<input id="HGetBook" type="hidden" value="@Url.Action("GetBook", "api/BookApi")" />
+<input id="HGetAuthor" type="hidden" value="@Url.Action("GetAuthor", "api/AuthorApi")" />
+<input id="HGetCategory" type="hidden" value="@Url.Action("GetCategory", "api/CategoryApi")" />
+<input id="HGetSeries" type="hidden" value="@Url.Action("GetSeries", "api/SeriesApi")" />
+<input id="HGetPublisher" type="hidden" value="@Url.Action("GetPublisher", "api/PublisherApi")" />
+<input id="HBookList" type="hidden" value="@Url.Action("BookList", "Book")" />
+<input id="HBookUploadFile" type="hidden" value="@Url.Action("UploadFiles", "Book")" />
+@section Scripts{
+    <script src="@Url.Content("~/AdminScripts/book.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/seriessearch.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/publishersearch.js")"></script>
+    <script src="@Url.Content("~/AdminScripts/authorsearch.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BookEntryLoad();
+        });
+    </script>
+}
+
+
