@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using TBS_Model;
 using System.Web.Mvc;
+using System.Data;
+using Collection_BL;
 
 namespace TheBookSpace.Controllers
 {
@@ -11,7 +10,10 @@ namespace TheBookSpace.Controllers
         // GET: ShopHome
         public ActionResult ShopHome()
         {
-            return View();
+            CollectionModel collectionModel = new CollectionModel();
+            CollectionBL collectionBL = new CollectionBL();
+            collectionModel.dsShopHome = collectionBL.Collection_ShopHome_Select(collectionModel);
+            return View(collectionModel);
         }
     }
 }
