@@ -70,3 +70,7 @@ textarea.form-control {
     height: 18px;
     margin-top: 3px;
 }
+
+.hide{
+    display:none;
+}

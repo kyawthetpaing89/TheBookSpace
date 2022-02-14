@@ -2,6 +2,8 @@
     $("#Name").focus();
     if ($("#CollectionType").val() == 1) {
         $("#lblTitle").html('New Arrival')
+    } else if ($("#CollectionType").val() == 2) {
+        $("#lblTitle").html('Best Selling Books')
     }
     CollectionSearch();
 

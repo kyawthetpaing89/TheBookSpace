@@ -1,3 +1,3 @@
 ﻿function ShopHomeLoad() {
-    GetNewBooks();
+    //$("#productimg").attr('src', $("#himgpath").val() + $("#productimg").attr('src'));
 }

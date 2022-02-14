@@ -91,6 +91,19 @@
                             <li><a href="@Url.Action("BookList","Book")">Book List</a></li>
                             <li><a href="@Url.Action("BookEntry","Book")">Book Entry</a></li>
                             <li><a href="@Url.Action("CollectionList","Collection")?CollectionType=1">New Arrival</a></li>
+                            <li><a href="@Url.Action("CollectionList","Collection")?CollectionType=2">Best Selling Books</a></li>
+                            <li><a href="@Url.Action("CollectionList","Collection")?CollectionType=3">Best Deals</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="ion-ios-heart bg-green"></i>
+                            <span>Promotion</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="@Url.Action("PromotionList","Promotion")">Promotion List</a></li>
+                            <li><a href="@Url.Action("PromotionEntry","Promotion")">Promotion Entry</a></li>
                         </ul>
                     </li>
                     <li class="has-sub">
@@ -137,23 +150,11 @@
                             <li><a href="@Url.Action("CategoryEntry","Category")">Category Entry</a></li>
                         </ul>
                     </li>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <i class="bg-green"><ion-icon style="color:blue" name="server-outline"></ion-icon></i>
-                            <span>စာရင်းများ</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="@Url.Action("OrderWinnerList","Order")">ပေါက်သည့်စာရင်း</a></li>
-                            <li><a href="@Url.Action("SummaryList","Summary")">စာရင်းများကြည့်ရန်</a></li>
-                            <li><a href="@Url.Action("DailySummaryList","Summary")">နေ့အလိုက် စာရင်းများ</a></li>
-                            <li><a href="@Url.Action("SummaryListByTime","Summary")">ဒိုင်ခွဲ စာရင်းများ</a></li>
-                        </ul>
-                    </li>
                     <li>
                         <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ion-ios-arrow-back"></i></a>
                     </li>
                 </ul>
+
             </div>
         </div>
         <div class="sidebar-bg"></div>

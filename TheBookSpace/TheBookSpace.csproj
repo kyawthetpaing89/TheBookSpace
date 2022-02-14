@@ -151,6 +151,8 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageapiController.cs" />
+    <Compile Include="Controllers\PromotionApiController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\PublisherApiController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Controllers\SeriesApiController.cs" />
@@ -186,6 +188,7 @@
     <Content Include="AdminScripts\app.min.js" />
     <Content Include="AdminScripts\apple.min.js" />
     <Content Include="AdminScripts\author.js" />
+    <Content Include="AdminScripts\authormultisearch.js" />
     <Content Include="AdminScripts\authorsearch.js" />
     <Content Include="AdminScripts\book.js" />
     <Content Include="AdminScripts\bookmultisearch.js" />
@@ -198,6 +201,7 @@
     <Content Include="AdminScripts\buttons.html5.min.js" />
     <Content Include="AdminScripts\buttons.print.min.js" />
     <Content Include="AdminScripts\category.js" />
+    <Content Include="AdminScripts\categorymultisearch.js" />
     <Content Include="AdminScripts\cleave.js" />
     <Content Include="AdminScripts\cleave.min.js" />
     <Content Include="AdminScripts\collection.js" />
@@ -209,9 +213,13 @@
     <Content Include="AdminScripts\iziModal.min.js" />
     <Content Include="AdminScripts\jquery.dataTables.min.js" />
     <Content Include="AdminScripts\jszip.min.js" />
+    <Content Include="AdminScripts\promotion.js" />
+    <Content Include="AdminScripts\promotionsearch.js" />
     <Content Include="AdminScripts\publisher.js" />
+    <Content Include="AdminScripts\publishermultisearch.js" />
     <Content Include="AdminScripts\publishersearch.js" />
     <Content Include="AdminScripts\series.js" />
+    <Content Include="AdminScripts\seriesmultisearch.js" />
     <Content Include="AdminScripts\seriessearch.js" />
     <Content Include="AdminScripts\staff.js" />
     <Content Include="AdminScripts\message.js" />
@@ -328,6 +336,13 @@
     <Content Include="Views\ShopHome\ShopHome.cshtml" />
     <Content Include="Views\Collection\CollectionList.cshtml" />
     <Content Include="Views\Search\BookMultiSearch.cshtml" />
+    <Content Include="Views\Promotion\PromotionList.cshtml" />
+    <Content Include="Views\Promotion\PromotionEntry.cshtml" />
+    <Content Include="Views\Search\PromotionSearch.cshtml" />
+    <Content Include="Views\Search\AuthorMultiSearch.cshtml" />
+    <Content Include="Views\Search\PublisherMultiSearch.cshtml" />
+    <Content Include="Views\Search\SeriesMultiSearch.cshtml" />
+    <Content Include="Views\Search\CategoryMultiSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Author_BL\Author_BL.csproj">
@@ -349,6 +364,10 @@
     <ProjectReference Include="..\Message_BL\Message_BL.csproj">
       <Project>{7c9e4295-5ed1-47b8-a83d-d1fbfe9a61e7}</Project>
       <Name>Message_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Promotion_BL\Promotion_BL.csproj">
+      <Project>{f37cd53b-a07b-4da9-91f8-3e8c48914e6f}</Project>
+      <Name>Promotion_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Publisher_BL\Publisher_BL.csproj">
       <Project>{3c816f8f-a694-4090-87f5-9451a8dda8e7}</Project>

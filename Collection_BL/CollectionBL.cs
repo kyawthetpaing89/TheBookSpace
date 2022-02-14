@@ -32,5 +32,11 @@ namespace Collection_BL
             collectionModel.Sqlprms[3] = new SqlParameter("@Mode", collectionModel.Mode);
             return cKMDL.InsertUpdateDeleteData("T_Collection_CUD", ff.GetConnectionWithDefaultPath("TBS"), collectionModel.Sqlprms);
         }
+
+        public DataSet Collection_ShopHome_Select(CollectionModel collectionModel)
+        {
+            collectionModel.Sqlprms = new SqlParameter[0];
+            return cKMDL.SelectDataSet("T_Collection_ShopHome_Select", ff.GetConnectionWithDefaultPath("TBS"), collectionModel.Sqlprms);
+        }
     }
 }

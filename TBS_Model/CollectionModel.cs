@@ -1,6 +1,8 @@
-﻿namespace TBS_Model
+﻿using System.Data;
+
+namespace TBS_Model
 {
-    public class CollectionModel:BaseModel
+    public class CollectionModel : BaseModel
     {
         public string BookCD { get; set; }
         public string BookName { get; set; }
@@ -8,5 +10,6 @@
         public string CollectionName { get; set; }
         public string BookJson { get; set; }
         public string RowCount { get; set; }
+        public DataSet dsShopHome { get; set; }
     }
 }

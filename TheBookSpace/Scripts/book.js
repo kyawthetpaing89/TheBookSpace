@@ -7,8 +7,5 @@
 }
 
 function GetNewBookResponse(data) {
-    var jsondata = JSON.parse(data);
-    jsondata.forEach(function (o) {
-        var bookdiv = '';
-    })
+
 }
