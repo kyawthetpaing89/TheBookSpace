@@ -150,7 +150,7 @@ function SaveResponse(response) {
 
 function AuthorEntryClear() {
     $("#AuthorName").val('');
-    $('#Type').children("option:selected").text('');
+    $('#Type').val('');
     $("#AboutAuthor").val('');
 }
 

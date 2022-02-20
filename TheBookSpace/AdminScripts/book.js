@@ -289,7 +289,7 @@ function BookSaveClick() {
                 AuthorCD3: $("#AuthorCD3").val(),
                 IllustratorCD1: $("#IllustratorCD1").val(),
                 IllustratorCD2: $("#IllustratorCD2").val(),
-                IllustratorCD3: $("#lblIllustrator3").val(),
+                IllustratorCD3: $("#IllustratorCD3").val(),
                 FolderUrl: $("#FolderUrl").val(),
                 CoverImageUrl: $("#CoverImageUrl").val(),
                 SampleImageUrl1: $("#SampleImageUrl1").val(),

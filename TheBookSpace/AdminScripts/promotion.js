@@ -53,6 +53,17 @@ function PromotionSearch() {
 }
 
 function PromotionEntryLoad() {
+    $("#BookMultiSearchModal").iziModal({
+        title: 'Series Search',
+        TransitionIn: 'FadeInRight',
+        theme: 'light',
+        headerColor: 'lightcyan',
+        padding: 10,
+        top: 70,
+        width: '60%',
+
+    });
+
     $("#SeriesMultiSearchModal").iziModal({
         title: 'Series Search',
         TransitionIn: 'FadeInRight',
@@ -130,7 +141,9 @@ function PromotionEntryLoad() {
 }
 
 function PromotionBookSearch() {
-    if ($("#PromotionType").val() == '2') {
+    if ($("#PromotionType").val() == '1') {
+        ShowBookMultiSearchModal();
+    } else if ($("#PromotionType").val() == '2') {
         ShowSeriesSearchModal();
     } else if ($("#PromotionType").val() == '3') {
         ShowCategorySearchModal();
