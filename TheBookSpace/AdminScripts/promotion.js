@@ -136,8 +136,6 @@ function PromotionEntryLoad() {
         $("#btnSave").removeClass('btn btn-green');
         $("#btnSave").addClass('btn btn-warning');
     }
-
-    $('#tblPromotion').DataTable();
 }
 
 function PromotionBookSearch() {
@@ -257,6 +255,14 @@ function PromotionStop() {
 
 function AddPromotionItem(jsonObj) {
     $.each(jsonObj, function (i, obj) {
-        $('#tblPromotion').append('<tr><td class="hide">' + obj["CD"] +'</td><td class="hide">'+ obj["Type"] +'</td><td>'+ obj["TypeName"] +'</td><td>' + obj["Name"] +'</td></tr>');
+        $('#tblPromotion').append('<tr><td class="hide">' + obj["CD"] + '</td><td class="hide">' + obj["Type"] +'</td><td style="width:10%"><button type="button" style="margin-right:5px" class="btn btn-danger" title="Delete" onclick="DeletePromotionItem(this)"><i class="fa fa-trash"></i>&nbsp;Delete</button></td><td>'+ obj["TypeName"] +'</td><td>' + obj["Name"] +'</td></tr>');
     });
+}
+
+function DeletePromotionItem(row) {
+    ShowConfirmMessage('Q001', 'PromotionItemDeleteConfirm',row); 
+}
+
+function PromotionItemDeleteConfirm(row) {
+    $(row).closest("tr").remove();
 }

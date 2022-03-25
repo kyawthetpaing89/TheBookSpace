@@ -150,6 +150,7 @@
     <Compile Include="Controllers\CollectionApiController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\MessageapiController.cs" />
     <Compile Include="Controllers\PromotionApiController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
@@ -343,6 +344,7 @@
     <Content Include="Views\Search\PublisherMultiSearch.cshtml" />
     <Content Include="Views\Search\SeriesMultiSearch.cshtml" />
     <Content Include="Views\Search\CategoryMultiSearch.cshtml" />
+    <Content Include="Views\Import\ImportData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Author_BL\Author_BL.csproj">

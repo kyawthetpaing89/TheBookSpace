@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ImportData";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel panel-inverse">
+    <div class="panel-heading" style="text-align: center;">
+        <h4 class="panel-title">Autor/Illustrator Entry</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fileupload-buttonbar">
+            <div class="col-xl-7">
+                <span class="btn btn-primary fileinput-button me-1">
+                    <i class="fa fa-fw fa-plus"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="files[]" multiple="">
+                </span>
+                <button type="submit" class="btn btn-primary start me-1">
+                    <i class="fa fa-fw fa-upload"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-default cancel me-1">
+                    <i class="fa fa-fw fa-ban"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <button type="button" class="btn btn-default delete me-1">
+                    <i class="fa fa-fw fa-trash"></i>
+                    <span>Delete</span>
+                </button>
+
+                <span class="fileupload-process"></span>
+            </div>
+
+            <div class="col-xl-5 fileupload-progress fade d-none d-xl-block">
+
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+
+                <div class="progress-extended">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
